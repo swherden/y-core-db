@@ -2,7 +2,6 @@
 //https://github.com/Talento90/organization-api/tree/master/organizations-api/src
 import util from "util";
 import { createPool } from "mysql";
-import { endianness } from "os";
 
 export function init(configs) {
   var pool = createPool({
