@@ -2,6 +2,7 @@
 //https://github.com/Talento90/organization-api/tree/master/organizations-api/src
 import util from "util";
 import { createPool } from "mysql";
+import { endianness } from "os";
 
 export function init(configs) {
   var pool = createPool({
@@ -32,4 +33,17 @@ export function init(configs) {
   });
   pool.query = util.promisify(pool.query);
   return pool;
+}
+
+export function getConfig(env) {
+  var config = {
+    host: env.DB_HOST,
+    user: env.DB_USER,
+    connectionLimit: env.DB_CONNECTION_LIMIT,
+    database: env.DB_DATABASE,
+    debug: env.DB_DEBUG,
+    password: env.DB_PASSWORD,
+    port: env.DB_PORT,
+  };
+  return config;
 }
