@@ -4,6 +4,7 @@ import util from "util";
 import { createPool } from "mysql";
 
 export function init(configs) {
+  console.log(configs);
   var pool = createPool({
     host: configs.host,
     user: configs.user,
@@ -35,12 +36,13 @@ export function init(configs) {
 }
 
 export function getConfig(env) {
+  const debug = env.DB_DEBUG === 'true' ? true : false;
   var config = {
     host: env.DB_HOST,
     user: env.DB_USER,
     connectionLimit: env.DB_CONNECTION_LIMIT,
     database: env.DB_DATABASE,
-    debug: env.DB_DEBUG,
+    debug: debug,
     password: env.DB_PASSWORD,
     port: env.DB_PORT,
   };
