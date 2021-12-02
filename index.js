@@ -4,7 +4,6 @@ import util from "util";
 import { createPool } from "mysql";
 
 export function init(configs) {
-  console.log(configs);
   var pool = createPool({
     host: configs.host,
     user: configs.user,
